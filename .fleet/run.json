@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+          "type": "python",
+          "name": "dm_1",
+          "file": "dm_1.py",
+          "arguments": [],
+        },
+
+    ]
+}
