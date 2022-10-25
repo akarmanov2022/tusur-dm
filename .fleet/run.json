@@ -3,7 +3,7 @@
         {
           "type": "python",
           "name": "dm_1",
-          "file": "dm_1.py",
+          "file": "issue-1/dm_1.py",
           "arguments": [],
         },
 

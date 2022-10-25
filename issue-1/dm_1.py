@@ -26,7 +26,7 @@ def matrix_to_graph(mx: list) -> nx.Graph():
     return graph
 
 
-with open('matrix.csv', 'r') as f:
+with open('issue-1/matrix.csv', 'r') as f:
     reader = csv.reader(f)
     matrix = list(reader)
 
