@@ -31,7 +31,7 @@ with open('issue-1/matrix.csv', 'r') as f:
     matrix = list(reader)
 
 g = matrix_to_graph(matrix)
-pos = nx.spring_layout(g)
 
-nx.draw(g, with_labels=True, pos=pos)
+# Выводит изоморфные графы
+nx.draw_random(g, with_labels=True)
 plt.show()
