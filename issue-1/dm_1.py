@@ -1,6 +1,7 @@
 import matplotlib
 import networkx as nx
 import matplotlib.pyplot as plt
+import numpy as np
 import csv
 
 matplotlib.use('TkAgg')
@@ -14,21 +15,28 @@ def matrix_to_graph(mx: list) -> nx.Graph():
     """
     graph = nx.Graph()
     edges = []
-    for i, line in enumerate(mx, start=1):
-        for j, number in enumerate(line, start=1):
-            i_number = int(number)
-            if i_number == 1:
-                edges.append((i, j))
-        i_line = map(int, line)
-        if sum(i_line) == 0:
-            graph.add_node(i)
+
+    for i, row in enumerate(mx):
+        for j, col in enumerate(row):
+            if col == 1:
+                for k in range(j + 1, len(row)):
+                    if row[k] == 1:
+                        edges.append((j + 1, k + 1))
+        graph.add_node(i + 1)
+
     graph.add_edges_from(edges)
     return graph
 
 
 with open('issue-1/matrix.csv', 'r') as f:
     reader = csv.reader(f)
-    matrix = list(reader)
+    matrix = []
+    for row in list(reader):
+        line = []
+        for col in row:
+            line.append(int(col))
+        matrix.append(line)
+    matrix = np.transpose(matrix)
 
 g = matrix_to_graph(matrix)
 
