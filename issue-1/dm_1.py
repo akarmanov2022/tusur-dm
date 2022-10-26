@@ -17,16 +17,18 @@ def matrix_to_graph(mx: list) -> nx.Graph():
     edges = []
 
     for i, row in enumerate(mx):
-        for j, col in enumerate(row):
-            if col == 1:
-                for k in range(j + 1, len(row)):
-                    if row[k] == 1:
-                        edges.append((j + 1, k + 1))
+        if sum(row) == 2:
+            for j, col in enumerate(row):
+                if col == 1:
+                    for k in range(j + 1, len(row)):
+                        if row[k] == 1:
+                            edges.append((j + 1, k + 1))
+                if col == 2:
+                    edges.append((j + 1, j + 1))
         graph.add_node(i + 1)
 
     graph.add_edges_from(edges)
     return graph
-
 
 
 with open('issue-1/matrix.csv', 'r') as f:
